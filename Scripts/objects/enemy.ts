@@ -7,6 +7,7 @@ module objects {
         private _life: number;
 
         private _alive: boolean
+        private _lifeLabel: objects.Label
 
         // public variables
         public name: string;
@@ -17,14 +18,28 @@ module objects {
         constructor(imageString: string, life: number) {
             super(enemyAtlas, imageString, "");
 
+            let initialPosition = new Vector2(
+                Math.floor((Math.random() * config.Screen.WIDTH)),
+                Math.floor(Math.random() * config.Screen.HEIGHT)
+            )
+
             // randomly spawn robbers locations
-            this.setPosition(new Vector2(
-                (Math.random() * config.Screen.WIDTH),
-                Math.random() * config.Screen.HEIGHT
-            ))
+            this.setPosition(initialPosition)
 
             this._life = life;
             this._alive = true
+
+            this._lifeLabel = new objects.Label(
+                "Lives: " + this.life,
+                "20px comic sans ms",
+                "#f7e907",
+                initialPosition.x,
+                initialPosition.y - this.height / 2
+            )
+        }
+
+        get lifeLabel(): objects.Label {
+            return this._lifeLabel
         }
 
         get life(): number {
@@ -51,14 +66,14 @@ module objects {
         }
 
         public shot(): void {
-            console.log('enemy has been shot.');
             this._life--;
-            console.log('remaining lives: ' + this.life);
+            this._lifeLabel.text = "Lives: " + this.life
 
         }
 
         private _dead(): void {
-            currentScene.removeChild(this);
+            currentScene.removeChild(this.lifeLabel)
+            currentScene.removeChild(this)
             this._alive = false
         }
     }

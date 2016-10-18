@@ -9,11 +9,20 @@ var objects;
         __extends(Enemy, _super);
         function Enemy(imageString, life) {
             _super.call(this, enemyAtlas, imageString, "");
+            var initialPosition = new objects.Vector2(Math.floor((Math.random() * config.Screen.WIDTH)), Math.floor(Math.random() * config.Screen.HEIGHT));
             // randomly spawn robbers locations
-            this.setPosition(new objects.Vector2((Math.random() * config.Screen.WIDTH), Math.random() * config.Screen.HEIGHT));
+            this.setPosition(initialPosition);
             this._life = life;
             this._alive = true;
+            this._lifeLabel = new objects.Label("Lives: " + this.life, "20px comic sans ms", "#f7e907", initialPosition.x, initialPosition.y - this.height / 2);
         }
+        Object.defineProperty(Enemy.prototype, "lifeLabel", {
+            get: function () {
+                return this._lifeLabel;
+            },
+            enumerable: true,
+            configurable: true
+        });
         Object.defineProperty(Enemy.prototype, "life", {
             get: function () {
                 return this._life;
@@ -41,11 +50,11 @@ var objects;
             return new objects.Vector2(this.x, this.y);
         };
         Enemy.prototype.shot = function () {
-            console.log('enemy has been shot.');
             this._life--;
-            console.log('remaining lives: ' + this.life);
+            this._lifeLabel.text = "Lives: " + this.life;
         };
         Enemy.prototype._dead = function () {
+            currentScene.removeChild(this.lifeLabel);
             currentScene.removeChild(this);
             this._alive = false;
         };

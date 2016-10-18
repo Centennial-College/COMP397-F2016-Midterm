@@ -30,8 +30,10 @@ var scenes;
             this._timeLabel.text = "Time: " + Math.floor(this._timer / config.Game.FPS);
             // dead Enemy
             if (!this._enemy.alive) {
+                // update score
                 this._score++;
                 this._scoreLabel.text = "Score: " + this._score;
+                //spawn new enemy
                 this._initializeEnemy();
             }
             //update scene's game objects
@@ -49,6 +51,7 @@ var scenes;
             this._enemy = new objects.Enemy("robber", Math.floor(Math.random() * 5 + 1));
             this._enemy.on('click', this._onEnemyClick, this);
             this.addChild(this._enemy);
+            this.addChild(this._enemy.lifeLabel);
         };
         Play.prototype._onEnemyClick = function (event) {
             this._enemy.shot();
