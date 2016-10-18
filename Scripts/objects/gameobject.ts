@@ -3,7 +3,7 @@
  * @author Kevin Ma
  * @description This class is blueprint/template which all gameobjects build off from
  * @date Oct 18 2016
- * @version 0.12.0
+ * @version 0.13.0
  */
 module objects {
     export abstract class GameObject extends createjs.Sprite {
@@ -24,6 +24,14 @@ module objects {
 
         get height(): number {
             return this._height
+        }
+
+        get halfWidth(): number {
+            return this.width / 2
+        }
+
+        get halfHeight(): number {
+            return this.height / 2
         }
 
         set height(h: number) {

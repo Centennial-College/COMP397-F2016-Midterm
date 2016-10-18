@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @author Kevin Ma
  * @description This class is blueprint/template which all gameobjects build off from
  * @date Oct 18 2016
- * @version 0.12.0
+ * @version 0.13.0
  */
 var objects;
 (function (objects) {
@@ -36,6 +36,20 @@ var objects;
             },
             set: function (h) {
                 this._height = h;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(GameObject.prototype, "halfWidth", {
+            get: function () {
+                return this.width / 2;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(GameObject.prototype, "halfHeight", {
+            get: function () {
+                return this.height / 2;
             },
             enumerable: true,
             configurable: true
