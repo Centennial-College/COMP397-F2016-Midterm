@@ -3,7 +3,7 @@
  * @author Kevin Ma
  * @description This class handles all the behaviors and attributes for the main gameplay
  * @date Oct 18 2016
- * @version 1.0.0 - fixed two MAJOR bugs and Initial Release
+ * @version 1.1.0 - when enemy spawns, faces random directions
  */
 module scenes {
     export class Play extends objects.Scene {
@@ -107,7 +107,11 @@ module scenes {
          * @memberOf Play
          */
         private _initializeEnemy(): void {
-            this._enemy = new objects.Enemy("robber", Math.floor(Math.random() * 5 + 1))
+            this._enemy = new objects.Enemy(
+                "robber",
+                Math.floor(Math.random() * 5 + 1), // random number between 1 and 5
+                Math.floor(Math.random() * 10 + 1), // random number between 1 and 10
+            )
             this._enemy.shadow = new createjs.Shadow('#000', 3, 3, 15)
             this.addChild(this._enemy)
             this.addChild(this._enemy.lifeLabel)

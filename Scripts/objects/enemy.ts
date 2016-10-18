@@ -4,7 +4,7 @@
  * @description This class handles all behaviors and attributes of the Enemy game object and
  * extends from the GameObject class
  * @date Oct 18 2016
- * @version 1.0.0 - fixed two MAJOR bugs and Initial Release
+ * @version 1.1.0 - when enemy spawns, faces random directions
  */
 module objects {
     export class Enemy extends objects.GameObject {
@@ -26,8 +26,12 @@ module objects {
         public height: number;
         public center: objects.Vector2;
 
-        constructor(imageString: string, life: number) {
+        constructor(imageString: string, life: number, directionFacing: number) {
             super(enemyAtlas, imageString, "poof", 5);
+
+            // Facing right if random number generated is > 5 (50% chance)
+            // else facing left
+            this.scaleX = (directionFacing > 5) ? 1 : -1;
 
             let randomXCoord = Math.floor((Math.random() * config.Screen.WIDTH))
             let randomYCoord = Math.floor((Math.random() * config.Screen.HEIGHT))

@@ -9,14 +9,17 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @description This class handles all behaviors and attributes of the Enemy game object and
  * extends from the GameObject class
  * @date Oct 18 2016
- * @version 1.0.0 - fixed two MAJOR bugs and Initial Release
+ * @version 1.1.0 - when enemy spawns, faces random directions
  */
 var objects;
 (function (objects) {
     var Enemy = (function (_super) {
         __extends(Enemy, _super);
-        function Enemy(imageString, life) {
+        function Enemy(imageString, life, directionFacing) {
             _super.call(this, enemyAtlas, imageString, "poof", 5);
+            // Facing right if random number generated is > 5 (50% chance)
+            // else facing left
+            this.scaleX = (directionFacing > 5) ? 1 : -1;
             var randomXCoord = Math.floor((Math.random() * config.Screen.WIDTH));
             var randomYCoord = Math.floor((Math.random() * config.Screen.HEIGHT));
             this._deadAnimPlayedDuration = 0;
