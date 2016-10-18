@@ -4,7 +4,7 @@
  * @description This class handles all behaviors and attributes of the Enemy game object and
  * extends from the GameObject class
  * @date Oct 18 2016
- * @version 1.1.0 - when enemy spawns, faces random directions
+ * @version 1.1.1 - cleaned up code, removed unused
  */
 module objects {
     export class Enemy extends objects.GameObject {
@@ -40,6 +40,7 @@ module objects {
             // CHECK SPAWN BOUNDS OF THE ENEMY OBJECT'S POSITION
             // registration point is the middle of the enemy sprite
             // ensure that the spawn location is within bounds of the canvas
+
             // min bounds, should be at least half of enemy width so will be fully visible
             randomXCoord = Math.max(randomXCoord, this.halfWidth)
             // max bounds, should be <= screen width - half enemy width
@@ -60,7 +61,6 @@ module objects {
 
             this._life = life;
             this._alive = true
-            // this._alive = true
 
             // create label attributed to the enemy object
             this._lifeLabel = new objects.Label(

@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @description This class handles all behaviors and attributes of the Enemy game object and
  * extends from the GameObject class
  * @date Oct 18 2016
- * @version 1.1.0 - when enemy spawns, faces random directions
+ * @version 1.1.1 - cleaned up code, removed unused
  */
 var objects;
 (function (objects) {
@@ -39,7 +39,6 @@ var objects;
             this.setPosition(initialPosition);
             this._life = life;
             this._alive = true;
-            // this._alive = true
             // create label attributed to the enemy object
             this._lifeLabel = new objects.Label("Lives: " + this.life, "20px comic sans ms", "#f7e907", initialPosition.x, initialPosition.y - this.height / 2);
             this._lifeLabel.shadow = new createjs.Shadow('#000', 2, 2, 5);

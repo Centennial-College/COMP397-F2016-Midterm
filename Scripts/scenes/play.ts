@@ -3,7 +3,7 @@
  * @author Kevin Ma
  * @description This class handles all the behaviors and attributes for the main gameplay
  * @date Oct 18 2016
- * @version 1.1.0 - when enemy spawns, faces random directions
+ * @version 1.1.1 - cleaned up code, removed unused
  */
 module scenes {
     export class Play extends objects.Scene {
@@ -60,9 +60,6 @@ module scenes {
 
             this._initializeCursor()
 
-
-
-
             stage.addChild(this);
         }
 
@@ -75,13 +72,6 @@ module scenes {
 
                 this._onTopOfEnemy = false
 
-                // // lets animation finish playing before deleting and creating new
-                // this._deadAnimCounter++
-
-                // if (this._deadAnimCounter >= 12) {
-                //     console.log('finished animation');
-                //     this._deadAnimCounter = 0
-
                 // update score
                 this._score += 5
                 this._scoreLabel.text = "Score: " + this._score
@@ -91,7 +81,6 @@ module scenes {
                 this.removeChild(this._crosshairCursor)
                 this._initializeEnemy()
                 this._initializeCursor()
-                // }
             }
 
             //update scene's game objects
