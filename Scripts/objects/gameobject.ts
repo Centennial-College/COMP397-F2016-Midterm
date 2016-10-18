@@ -3,10 +3,11 @@
  * @author Kevin Ma
  * @description This class is blueprint/template which all gameobjects build off from
  * @date Oct 18 2016
- * @version 0.1.0
+ * @version 0.12.0
  */
 module objects {
     export abstract class GameObject extends createjs.Sprite {
+        // instance variables
         private _width: number;
         private _height: number;
         private _name: string;

@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @author Kevin Ma
  * @description This class handles all the behaviors and attributes for the main gameplay
  * @date Oct 18 2016
- * @version 0.1.0
+ * @version 0.12.0
  */
 var scenes;
 (function (scenes) {

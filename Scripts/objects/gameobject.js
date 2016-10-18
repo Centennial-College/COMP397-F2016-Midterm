@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @author Kevin Ma
  * @description This class is blueprint/template which all gameobjects build off from
  * @date Oct 18 2016
- * @version 0.1.0
+ * @version 0.12.0
  */
 var objects;
 (function (objects) {

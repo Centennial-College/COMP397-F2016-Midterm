@@ -3,11 +3,12 @@
  * @author Kevin Ma
  * @description This class handles all the behaviors and attributes for the main gameplay
  * @date Oct 18 2016
- * @version 0.1.0
+ * @version 0.12.0
  */
 module scenes {
     export class Play extends objects.Scene {
 
+        // instance variables
         private _backgroundImage: createjs.Bitmap;
         private _enemy: objects.Enemy
         private _scoreLabel: objects.Label;

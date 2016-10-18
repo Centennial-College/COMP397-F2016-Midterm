@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @description The Menu class extends from the Scene class and includes all functionalities of
  * the Menu scene for the game
  * @date Oct 18 2016
- * @version 0.1.0
+ * @version 0.12.0
  */
 var scenes;
 (function (scenes) {

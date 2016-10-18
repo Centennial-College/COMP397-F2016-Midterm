@@ -3,7 +3,7 @@
  * @author Kevin Ma
  * @description This class is the manifest for all the typescript code for the game
  * @date Oct 18 2016
- * @version 0.1.0
+ * @version 0.12.0
  */
 
 /// <reference path = "_reference.ts" />
