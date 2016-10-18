@@ -5,12 +5,16 @@ module scenes {
         private _enemy: objects.Enemy
         private _scoreLabel: objects.Label;
         private _timeLabel: objects.Label;
+        private _timer: number
 
         constructor() {
             super();
         }
 
         public start(): void {
+
+            this._timer = 0
+
             this._backgroundImage = new createjs.Bitmap(assets.getResult("Bg"))
             this.addChild(this._backgroundImage)
 
@@ -24,7 +28,7 @@ module scenes {
             this._scoreLabel.shadow = new createjs.Shadow("#000", 5, 5, 15)
             this.addChild(this._scoreLabel)
 
-             this._timeLabel = new objects.Label(
+            this._timeLabel = new objects.Label(
                 "Time: 0",
                 "40px comic sans ms",
                 "#f7e907",
@@ -41,6 +45,8 @@ module scenes {
         }
 
         public update(): void {
+            this._timer++
+            this._timeLabel.text = "Time: " + Math.floor(this._timer / config.Game.FPS)
         }
 
         private _onEnemyClick(event: createjs.MouseEvent): void {

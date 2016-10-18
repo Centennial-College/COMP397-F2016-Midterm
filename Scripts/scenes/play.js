@@ -11,6 +11,7 @@ var scenes;
             _super.call(this);
         }
         Play.prototype.start = function () {
+            this._timer = 0;
             this._backgroundImage = new createjs.Bitmap(assets.getResult("Bg"));
             this.addChild(this._backgroundImage);
             this._scoreLabel = new objects.Label("Score: 0", "40px comic sans ms", "#f7e907", 90, 40);
@@ -24,6 +25,8 @@ var scenes;
             stage.addChild(this);
         };
         Play.prototype.update = function () {
+            this._timer++;
+            this._timeLabel.text = "Time: " + Math.floor(this._timer / config.Game.FPS);
         };
         Play.prototype._onEnemyClick = function (event) {
         };
