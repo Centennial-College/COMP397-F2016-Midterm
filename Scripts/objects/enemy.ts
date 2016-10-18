@@ -6,6 +6,8 @@ module objects {
 
         private _life: number;
 
+        private _alive: boolean
+
         // public variables
         public name: string;
         public width: number;
@@ -22,10 +24,15 @@ module objects {
             ))
 
             this._life = life;
+            this._alive = true
         }
 
         get life(): number {
             return this._life;
+        }
+
+        get alive(): boolean {
+            return this._alive
         }
 
         public update(): void {
@@ -52,6 +59,7 @@ module objects {
 
         private _dead(): void {
             currentScene.removeChild(this);
+            this._alive = false
         }
     }
 }

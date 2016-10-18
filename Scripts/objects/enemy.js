@@ -12,10 +12,18 @@ var objects;
             // randomly spawn robbers locations
             this.setPosition(new objects.Vector2((Math.random() * config.Screen.WIDTH), Math.random() * config.Screen.HEIGHT));
             this._life = life;
+            this._alive = true;
         }
         Object.defineProperty(Enemy.prototype, "life", {
             get: function () {
                 return this._life;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(Enemy.prototype, "alive", {
+            get: function () {
+                return this._alive;
             },
             enumerable: true,
             configurable: true
@@ -39,6 +47,7 @@ var objects;
         };
         Enemy.prototype._dead = function () {
             currentScene.removeChild(this);
+            this._alive = false;
         };
         return Enemy;
     }(objects.GameObject));

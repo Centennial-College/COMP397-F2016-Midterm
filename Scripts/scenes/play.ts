@@ -6,6 +6,7 @@ module scenes {
         private _scoreLabel: objects.Label;
         private _timeLabel: objects.Label;
         private _timer: number
+        private _score: number
 
         constructor() {
             super();
@@ -13,7 +14,9 @@ module scenes {
 
         public start(): void {
 
+            //var initializatons    
             this._timer = 0
+            this._score = 0
 
             this._backgroundImage = new createjs.Bitmap(assets.getResult("Bg"))
             this.addChild(this._backgroundImage)
@@ -38,9 +41,7 @@ module scenes {
             this._timeLabel.shadow = new createjs.Shadow("#000", 5, 5, 15)
             this.addChild(this._timeLabel)
 
-            this._enemy = new objects.Enemy("robber", 2)
-            this._enemy.on('click', this._onEnemyClick, this)
-            this.addChild(this._enemy)
+            this._initializeEnemy()
 
             stage.addChild(this);
         }
@@ -49,8 +50,30 @@ module scenes {
             this._timer++
             this._timeLabel.text = "Time: " + Math.floor(this._timer / config.Game.FPS)
 
+            // dead Enemy
+            if (!this._enemy.alive) {
+                this._score++
+                this._scoreLabel.text = "Score: " + this._score
+
+                this._initializeEnemy()
+            }
+
             //update scene's game objects
             this._enemy.update()
+        }
+
+        /**
+         * Instantiates enemy object with random # lives between 1 and 5.
+         * Attaches click event so enemy can be killed 
+         * 
+         * @private
+         * 
+         * @memberOf Play
+         */
+        private _initializeEnemy(): void {
+            this._enemy = new objects.Enemy("robber", Math.floor(Math.random() * 5 + 1))
+            this._enemy.on('click', this._onEnemyClick, this)
+            this.addChild(this._enemy)
         }
 
         private _onEnemyClick(event: createjs.MouseEvent): void {
