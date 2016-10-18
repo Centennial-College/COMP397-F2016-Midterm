@@ -76,13 +76,13 @@ function changeScene(): void {
     switch (scene) {
         case config.Scene.MENU:
             stage.removeAllChildren();
-            currentScene = new scenes.Menu();;
             console.log("Starting MENU scene");
+            currentScene = new scenes.Menu();;
             break;
         case config.Scene.GAME:
             stage.removeAllChildren();
+            console.log("Starting GAME scene");
             currentScene = new scenes.Play();
-            console.log("Starting SHOOTER scene");
             break;
     }
 

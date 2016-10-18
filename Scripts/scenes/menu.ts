@@ -18,7 +18,7 @@ module scenes {
         }
 
         public start(): void {
-            console.log("Menu Scene Started");
+            console.log("Menu scene started...");
 
             // bg img
             this._backgroundImage = new createjs.Bitmap(assets.getResult("Bg"))
@@ -55,7 +55,6 @@ module scenes {
         }
 
         private _playBtnClick(event: createjs.MouseEvent) {
-            console.log("PRINT");
             scene = config.Scene.GAME;
             changeScene();
         }

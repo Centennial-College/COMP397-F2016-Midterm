@@ -16,7 +16,7 @@ var scenes;
             _super.call(this);
         }
         Menu.prototype.start = function () {
-            console.log("Menu Scene Started");
+            console.log("Menu scene started...");
             // bg img
             this._backgroundImage = new createjs.Bitmap(assets.getResult("Bg"));
             this.addChild(this._backgroundImage);
@@ -39,7 +39,6 @@ var scenes;
         Menu.prototype.update = function () {
         };
         Menu.prototype._playBtnClick = function (event) {
-            console.log("PRINT");
             scene = config.Scene.GAME;
             changeScene();
         };

@@ -13,6 +13,7 @@ module scenes {
         }
 
         public start(): void {
+            console.log('Game scene started...');
 
             //var initializatons    
             this._timer = 0
@@ -53,7 +54,7 @@ module scenes {
             // dead Enemy
             if (!this._enemy.alive) {
                 // update score
-                this._score++
+                this._score += 5
                 this._scoreLabel.text = "Score: " + this._score
 
                 //spawn new enemy
