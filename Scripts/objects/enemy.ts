@@ -36,6 +36,7 @@ module objects {
                 initialPosition.x,
                 initialPosition.y - this.height / 2
             )
+            this._lifeLabel.shadow = new createjs.Shadow('#000', 2, 2, 5)
         }
 
         get lifeLabel(): objects.Label {

@@ -49,6 +49,7 @@ var scenes;
          */
         Play.prototype._initializeEnemy = function () {
             this._enemy = new objects.Enemy("robber", Math.floor(Math.random() * 5 + 1));
+            this._enemy.shadow = new createjs.Shadow('#000', 3, 3, 15);
             this._enemy.on('click', this._onEnemyClick, this);
             this.addChild(this._enemy);
             this.addChild(this._enemy.lifeLabel);

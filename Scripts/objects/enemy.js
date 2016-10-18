@@ -15,6 +15,7 @@ var objects;
             this._life = life;
             this._alive = true;
             this._lifeLabel = new objects.Label("Lives: " + this.life, "20px comic sans ms", "#f7e907", initialPosition.x, initialPosition.y - this.height / 2);
+            this._lifeLabel.shadow = new createjs.Shadow('#000', 2, 2, 5);
         }
         Object.defineProperty(Enemy.prototype, "lifeLabel", {
             get: function () {
