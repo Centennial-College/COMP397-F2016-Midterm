@@ -3,6 +3,13 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+/**
+ * @file play.ts
+ * @author Kevin Ma
+ * @description This class handles all the behaviors and attributes for the main gameplay
+ * @date Oct 18 2016
+ * @version 0.1.0
+ */
 var scenes;
 (function (scenes) {
     var Play = (function (_super) {

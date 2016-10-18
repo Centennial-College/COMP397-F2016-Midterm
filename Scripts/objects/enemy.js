@@ -3,6 +3,14 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+/**
+ * @file enemy.ts
+ * @author Kevin Ma
+ * @description This class handles all behaviors and attributes of the Enemy game object and
+ * extends from the GameObject class
+ * @date Oct 18 2016
+ * @version 0.1.0
+ */
 var objects;
 (function (objects) {
     var Enemy = (function (_super) {

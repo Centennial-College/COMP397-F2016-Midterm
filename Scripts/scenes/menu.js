@@ -1,12 +1,16 @@
-/*
-    Scene module to group all user-defined scenes  under the same "namespace aka module"
-    Menu scene that contains all assets and functionality associated with the menu itself
-*/
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+/**
+ * @file menu.ts
+ * @author Kevin Ma
+ * @description The Menu class extends from the Scene class and includes all functionalities of
+ * the Menu scene for the game
+ * @date Oct 18 2016
+ * @version 0.1.0
+ */
 var scenes;
 (function (scenes) {
     var Menu = (function (_super) {

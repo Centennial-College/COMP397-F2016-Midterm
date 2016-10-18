@@ -1,3 +1,11 @@
+/**
+ * @file enemy.ts
+ * @author Kevin Ma
+ * @description This class handles all behaviors and attributes of the Enemy game object and
+ * extends from the GameObject class
+ * @date Oct 18 2016
+ * @version 0.1.0
+ */
 module objects {
     export class Enemy extends objects.GameObject {
 

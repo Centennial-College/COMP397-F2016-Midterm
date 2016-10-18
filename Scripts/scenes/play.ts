@@ -1,3 +1,10 @@
+/**
+ * @file play.ts
+ * @author Kevin Ma
+ * @description This class handles all the behaviors and attributes for the main gameplay
+ * @date Oct 18 2016
+ * @version 0.1.0
+ */
 module scenes {
     export class Play extends objects.Scene {
 

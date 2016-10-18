@@ -3,6 +3,13 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
+/**
+ * @file gameobject.ts
+ * @author Kevin Ma
+ * @description This class is blueprint/template which all gameobjects build off from
+ * @date Oct 18 2016
+ * @version 0.1.0
+ */
 var objects;
 (function (objects) {
     var GameObject = (function (_super) {
