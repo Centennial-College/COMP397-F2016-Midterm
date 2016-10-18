@@ -5,9 +5,13 @@ var canvas;
 var stage;
 var currentScene;
 var scene;
+var spriteSheetLoader;
+var enemyAtlas;
 // Preload Assets required
 var assetData = [
-    { id: "PlayBtn", src: "../../Assets/images/sack.png" }
+    { id: "PlayBtn", src: "../../Assets/images/sack.png" },
+    { id: "Bg", src: "../../Assets/images/bank.png" },
+    { id: "Enemy", src: "../../Assets/images/enemy.png" }
 ];
 function preload() {
     // Create a queue for assets being loaded
@@ -24,6 +28,27 @@ function init() {
     stage.enableMouseOver(20);
     createjs.Ticker.setFPS(config.Game.FPS);
     createjs.Ticker.on("tick", this.gameLoop, this);
+    enemyAtlas = new createjs.SpriteSheet({
+        "images": [
+            assets.getResult("Enemy")
+        ],
+        "frames": [
+            [1, 1, 200, 214, 0, 0, 0],
+            [203, 1, 128, 125, 0, 0, -3],
+            [203, 128, 102, 117, 0, -13, -9],
+            [307, 128, 91, 98, 0, -18, -18],
+            [400, 1, 128, 124, 0, 0, -4],
+            [400, 127, 128, 124, 0, 0, -4]
+        ],
+        "animations": {
+            "robber": { "frames": [0] },
+            "poof2": { "frames": [1] },
+            "poof4": { "frames": [2] },
+            "poof5": { "frames": [3] },
+            "poof1": { "frames": [4] },
+            "poof3": { "frames": [5] }
+        }
+    });
     scene = config.Scene.MENU;
     changeScene();
 }

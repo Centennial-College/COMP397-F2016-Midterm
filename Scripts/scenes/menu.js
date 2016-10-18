@@ -17,6 +17,14 @@ var scenes;
         }
         Menu.prototype.start = function () {
             console.log("Menu Scene Started");
+            // bg img
+            this._backgroundImage = new createjs.Bitmap(assets.getResult("Bg"));
+            this.addChild(this._backgroundImage);
+            // 5x5 Box Blur filter on bg image
+            var blurFilter = new createjs.BlurFilter(5, 5);
+            this._backgroundImage.filters = [blurFilter];
+            var bitmapBounds = this._backgroundImage.getBounds();
+            this._backgroundImage.cache(bitmapBounds.x, bitmapBounds.y, bitmapBounds.width, bitmapBounds.height);
             this._playBtn = new objects.Button("PlayBtn", config.Screen.CENTER_X, config.Screen.CENTER_Y + 150);
             this.addChild(this._playBtn);
             this._playBtn.on("click", this._playBtnClick, this);

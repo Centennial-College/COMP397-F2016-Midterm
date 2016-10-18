@@ -5,12 +5,17 @@ var assets: createjs.LoadQueue;
 var canvas: HTMLElement;
 var stage: createjs.Stage;
 
-var currentScene : objects.Scene;
+var currentScene: objects.Scene;
 var scene: number;
 
+let spriteSheetLoader: createjs.SpriteSheetLoader
+let enemyAtlas: createjs.SpriteSheet
+
 // Preload Assets required
-var assetData:objects.Asset[] = [
-    {id: "PlayBtn", src: "../../Assets/images/sack.png"}
+var assetData: objects.Asset[] = [
+    { id: "PlayBtn", src: "../../Assets/images/sack.png" },
+    { id: "Bg", src: "../../Assets/images/bank.png" },
+    { id: "Enemy", src: "../../Assets/images/enemy.png" }
 ];
 
 function preload() {
@@ -30,6 +35,31 @@ function init() {
     createjs.Ticker.setFPS(config.Game.FPS);
     createjs.Ticker.on("tick", this.gameLoop, this);
 
+    enemyAtlas = new createjs.SpriteSheet({
+        "images": [
+            assets.getResult("Enemy")
+        ],
+
+        "frames": [
+            [1, 1, 200, 214, 0, 0, 0],
+            [203, 1, 128, 125, 0, 0, -3],
+            [203, 128, 102, 117, 0, -13, -9],
+            [307, 128, 91, 98, 0, -18, -18],
+            [400, 1, 128, 124, 0, 0, -4],
+            [400, 127, 128, 124, 0, 0, -4]
+        ],
+
+        "animations": {
+            "robber": { "frames": [0] },
+            "poof2": { "frames": [1] },
+            "poof4": { "frames": [2] },
+            "poof5": { "frames": [3] },
+            "poof1": { "frames": [4] },
+            "poof3": { "frames": [5] }
+        }
+    }
+    )
+
     scene = config.Scene.MENU;
     changeScene();
 }
@@ -40,21 +70,20 @@ function gameLoop(event: createjs.Event): void {
     stage.update();
 }
 
-function changeScene() : void {
-    
+function changeScene(): void {
+
     // Simple state machine pattern to define scene swapping.
-    switch(scene)
-    {
-        case config.Scene.MENU :
+    switch (scene) {
+        case config.Scene.MENU:
             stage.removeAllChildren();
             currentScene = new scenes.Menu();;
             console.log("Starting MENU scene");
             break;
-        case config.Scene.GAME :
+        case config.Scene.GAME:
             stage.removeAllChildren();
             currentScene = new scenes.Play();
             console.log("Starting SHOOTER scene");
             break;
     }
-    
+
 }

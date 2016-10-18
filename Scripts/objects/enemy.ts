@@ -14,6 +14,7 @@ module objects {
 
         constructor(imageString:string, life : number) {
             super(enemyAtlas, imageString, "");
+            
             this._life = life;
         }
 

@@ -20,11 +20,5 @@
     "poof5": { "frames": [3] },
     "poof1": { "frames": [4] },
     "poof3": { "frames": [5] }
-},
-
-"texturepacker": [
-        "SmartUpdateHash: $TexturePacker:SmartUpdate:6b44ef51929ea21e17ff1b07ec9c1090:a443013636a6d3e24441fc0f2a91ca43:a99356c10d69482e9bee53d25c3d05e1$",
-        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
-]
-
+}
 }
