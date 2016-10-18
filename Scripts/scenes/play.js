@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @author Kevin Ma
  * @description This class handles all the behaviors and attributes for the main gameplay
  * @date Oct 18 2016
- * @version 0.13.0 - crosshair cursor and outline enemy on mouseover
+ * @version 1.0.0 - fixed two MAJOR bugs and Initial Release
  */
 var scenes;
 (function (scenes) {
@@ -42,6 +42,7 @@ var scenes;
             this._timeLabel.text = "Time: " + Math.floor(this._timer / config.Game.FPS);
             // dead Enemy
             if (!this._enemy.alive) {
+                this._onTopOfEnemy = false;
                 // // lets animation finish playing before deleting and creating new
                 // this._deadAnimCounter++
                 // if (this._deadAnimCounter >= 12) {

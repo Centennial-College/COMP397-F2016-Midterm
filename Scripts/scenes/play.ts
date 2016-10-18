@@ -3,7 +3,7 @@
  * @author Kevin Ma
  * @description This class handles all the behaviors and attributes for the main gameplay
  * @date Oct 18 2016
- * @version 0.13.0 - crosshair cursor and outline enemy on mouseover
+ * @version 1.0.0 - fixed two MAJOR bugs and Initial Release
  */
 module scenes {
     export class Play extends objects.Scene {
@@ -72,6 +72,8 @@ module scenes {
 
             // dead Enemy
             if (!this._enemy.alive) {
+
+                this._onTopOfEnemy = false
 
                 // // lets animation finish playing before deleting and creating new
                 // this._deadAnimCounter++

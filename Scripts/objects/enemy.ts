@@ -4,7 +4,7 @@
  * @description This class handles all behaviors and attributes of the Enemy game object and
  * extends from the GameObject class
  * @date Oct 18 2016
- * @version 0.14.0 - implemented poof
+ * @version 1.0.0 - fixed two MAJOR bugs and Initial Release
  */
 module objects {
     export class Enemy extends objects.GameObject {
@@ -81,6 +81,14 @@ module objects {
             return this._alive
         }
 
+        /**
+         * Plays the death animation of the enemy object when lives reach 0. 
+         * Checks are put in place to ensure that the animation finishes playing before
+         * the enemy is removed from the scene
+         * 
+         * 
+         * @memberOf Enemy
+         */
         public update(): void {
             if (this.life == 0) {
                 if (this._deadAnimPlayedDuration == 0)
@@ -88,7 +96,7 @@ module objects {
 
                 this._deadAnimPlayedDuration++
 
-                if (this._deadAnimPlayedDuration >= config.Game.FPS / this.deathAnimDuration) {
+                if (this._deadAnimPlayedDuration >= config.Game.FPS / this.numberOfDeathAnimationFrames) {
                     this._dead()
                     this._deadAnimPlayedDuration = 0
                 }
@@ -106,10 +114,15 @@ module objects {
         }
 
         public shot(): void {
-            // update life and respective label
-            this._life -= 1
-            this._lifeLabel.text = "Lives: " + this.life
+            // ONLY allows the player to shoot the enemy if the deathAnim
+            // is not being played and the enemy is alive
+            if (this._deadAnimPlayedDuration == 0 && this.life != 0) {
 
+                // update life and respective label
+                // prevents botters from using autoclickers to crash the game
+                this._life -= 1
+                this._lifeLabel.text = "Lives: " + this.life
+            }
         }
 
         private _dead(): void {
