@@ -87,6 +87,7 @@ module objects {
         public setPosition(pos: objects.Vector2): void {
             this.x = pos.x;
             this.y = pos.y;
+            this.position = pos
         }
 
         public getPosition(): objects.Vector2 {
@@ -95,7 +96,7 @@ module objects {
 
         public shot(): void {
             // update life and respective label
-            this._life--;
+            this._life-=1
             this._lifeLabel.text = "Lives: " + this.life
 
         }

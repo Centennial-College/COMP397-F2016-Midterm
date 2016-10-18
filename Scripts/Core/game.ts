@@ -3,7 +3,7 @@
  * @author Kevin Ma
  * @description This class is the manifest for all the typescript code for the game
  * @date Oct 18 2016
- * @version 0.12.0
+ * @version 0.13.0
  */
 
 /// <reference path = "_reference.ts" />
@@ -23,7 +23,8 @@ let enemyAtlas: createjs.SpriteSheet
 var assetData: objects.Asset[] = [
     { id: "PlayBtn", src: "../../Assets/images/sack.png" },
     { id: "Bg", src: "../../Assets/images/bank.png" },
-    { id: "Enemy", src: "../../Assets/images/enemy.png" }
+    { id: "Enemy", src: "../../Assets/images/enemy.png" },
+    { id: "Crosshair", src: "../../Assets/images/crosshair.png" },
 ];
 
 function preload() {

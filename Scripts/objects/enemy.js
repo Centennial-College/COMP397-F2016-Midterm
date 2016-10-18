@@ -69,13 +69,14 @@ var objects;
         Enemy.prototype.setPosition = function (pos) {
             this.x = pos.x;
             this.y = pos.y;
+            this.position = pos;
         };
         Enemy.prototype.getPosition = function () {
             return new objects.Vector2(this.x, this.y);
         };
         Enemy.prototype.shot = function () {
             // update life and respective label
-            this._life--;
+            this._life -= 1;
             this._lifeLabel.text = "Lives: " + this.life;
         };
         Enemy.prototype._dead = function () {
