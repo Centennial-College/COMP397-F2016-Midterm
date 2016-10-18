@@ -54,7 +54,12 @@ function init() {
             "poof4": { "frames": [2] },
             "poof5": { "frames": [3] },
             "poof1": { "frames": [4] },
-            "poof3": { "frames": [5] }
+            "poof3": { "frames": [5] },
+            "poof": {
+                "frames": [4, 1, 5, 2, 3],
+                // speed: 0.1,
+                next: false,
+            },
         }
     });
     scene = config.Scene.MENU;

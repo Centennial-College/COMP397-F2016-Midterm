@@ -9,16 +9,17 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @description This class handles all behaviors and attributes of the Enemy game object and
  * extends from the GameObject class
  * @date Oct 18 2016
- * @version 0.13.0
+ * @version 0.14.0 - implemented poof
  */
 var objects;
 (function (objects) {
     var Enemy = (function (_super) {
         __extends(Enemy, _super);
         function Enemy(imageString, life) {
-            _super.call(this, enemyAtlas, imageString, "");
+            _super.call(this, enemyAtlas, imageString, "poof", 5);
             var randomXCoord = Math.floor((Math.random() * config.Screen.WIDTH));
             var randomYCoord = Math.floor((Math.random() * config.Screen.HEIGHT));
+            this._deadAnimPlayedDuration = 0;
             // CHECK SPAWN BOUNDS OF THE ENEMY OBJECT'S POSITION
             // registration point is the middle of the enemy sprite
             // ensure that the spawn location is within bounds of the canvas
@@ -63,7 +64,13 @@ var objects;
         });
         Enemy.prototype.update = function () {
             if (this.life == 0) {
-                this._dead();
+                if (this._deadAnimPlayedDuration == 0)
+                    this.gotoAndPlay(this.deathAnim);
+                this._deadAnimPlayedDuration++;
+                if (this._deadAnimPlayedDuration >= config.Game.FPS / this.deathAnimDuration) {
+                    this._dead();
+                    this._deadAnimPlayedDuration = 0;
+                }
             }
         };
         Enemy.prototype.setPosition = function (pos) {

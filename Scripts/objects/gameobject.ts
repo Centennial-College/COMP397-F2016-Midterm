@@ -3,7 +3,7 @@
  * @author Kevin Ma
  * @description This class is blueprint/template which all gameobjects build off from
  * @date Oct 18 2016
- * @version 0.13.0
+ * @version 0.14.0
  */
 module objects {
     export abstract class GameObject extends createjs.Sprite {
@@ -12,8 +12,18 @@ module objects {
         private _height: number;
         private _name: string;
         private _position: Vector2;
+        private _deathAnim: string;
+        private _deathAnimDuration: number;
 
         // PUBLIC PROPERTIES
+        get deathAnim(): string {
+            return this._deathAnim
+        }
+
+        get deathAnimDuration(): number {
+            return this._deathAnimDuration
+        }
+
         get width(): number {
             return this._width
         }
@@ -54,9 +64,11 @@ module objects {
             this._position = p;
         }
 
-        constructor(atlas: createjs.SpriteSheet, imageString: string, deathAnimString) {
+        constructor(atlas: createjs.SpriteSheet, imageString: string, deathAnimString: string, deathAnimDuration: number) {
             super(atlas, imageString);
 
+            this._deathAnim = deathAnimString
+            this._deathAnimDuration = deathAnimDuration
             this._initialize(imageString);
             this.start();
         }

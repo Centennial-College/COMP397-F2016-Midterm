@@ -17,6 +17,7 @@ module scenes {
         private _score: number
         private _crosshairCursor: objects.Cursor
         private _onTopOfEnemy: boolean
+        private _deadAnimCounter: number
 
         constructor() {
             super();
@@ -28,6 +29,7 @@ module scenes {
             //var initializatons    
             this._timer = 0
             this._score = 0
+            this._deadAnimCounter = 0
             stage.cursor = 'none'
             this._onTopOfEnemy = false
 
@@ -70,6 +72,14 @@ module scenes {
 
             // dead Enemy
             if (!this._enemy.alive) {
+
+                // // lets animation finish playing before deleting and creating new
+                // this._deadAnimCounter++
+
+                // if (this._deadAnimCounter >= 12) {
+                //     console.log('finished animation');
+                //     this._deadAnimCounter = 0
+
                 // update score
                 this._score += 5
                 this._scoreLabel.text = "Score: " + this._score
@@ -79,6 +89,7 @@ module scenes {
                 this.removeChild(this._crosshairCursor)
                 this._initializeEnemy()
                 this._initializeCursor()
+                // }
             }
 
             //update scene's game objects
@@ -161,7 +172,6 @@ module scenes {
         private _onEnemyClick(event: createjs.MouseEvent): void {
             if (this._onTopOfEnemy) {
                 this._enemy.shot()
-                console.log('clicked enemy');
             }
 
         }

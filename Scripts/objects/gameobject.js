@@ -8,19 +8,35 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @author Kevin Ma
  * @description This class is blueprint/template which all gameobjects build off from
  * @date Oct 18 2016
- * @version 0.13.0
+ * @version 0.14.0
  */
 var objects;
 (function (objects) {
     var GameObject = (function (_super) {
         __extends(GameObject, _super);
-        function GameObject(atlas, imageString, deathAnimString) {
+        function GameObject(atlas, imageString, deathAnimString, deathAnimDuration) {
             _super.call(this, atlas, imageString);
+            this._deathAnim = deathAnimString;
+            this._deathAnimDuration = deathAnimDuration;
             this._initialize(imageString);
             this.start();
         }
-        Object.defineProperty(GameObject.prototype, "width", {
+        Object.defineProperty(GameObject.prototype, "deathAnim", {
             // PUBLIC PROPERTIES
+            get: function () {
+                return this._deathAnim;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(GameObject.prototype, "deathAnimDuration", {
+            get: function () {
+                return this._deathAnimDuration;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(GameObject.prototype, "width", {
             get: function () {
                 return this._width;
             },

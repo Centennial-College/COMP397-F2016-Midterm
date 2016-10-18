@@ -4,7 +4,7 @@
  * @description This class handles all behaviors and attributes of the Enemy game object and
  * extends from the GameObject class
  * @date Oct 18 2016
- * @version 0.13.0
+ * @version 0.14.0 - implemented poof
  */
 module objects {
     export class Enemy extends objects.GameObject {
@@ -18,6 +18,8 @@ module objects {
         private _alive: boolean
         private _lifeLabel: objects.Label
 
+        private _deadAnimPlayedDuration: number
+
         // public variables
         public name: string;
         public width: number;
@@ -25,10 +27,11 @@ module objects {
         public center: objects.Vector2;
 
         constructor(imageString: string, life: number) {
-            super(enemyAtlas, imageString, "");
+            super(enemyAtlas, imageString, "poof", 5);
 
             let randomXCoord = Math.floor((Math.random() * config.Screen.WIDTH))
             let randomYCoord = Math.floor((Math.random() * config.Screen.HEIGHT))
+            this._deadAnimPlayedDuration = 0
 
             // CHECK SPAWN BOUNDS OF THE ENEMY OBJECT'S POSITION
             // registration point is the middle of the enemy sprite
@@ -80,7 +83,15 @@ module objects {
 
         public update(): void {
             if (this.life == 0) {
-                this._dead()
+                if (this._deadAnimPlayedDuration == 0)
+                    this.gotoAndPlay(this.deathAnim)
+
+                this._deadAnimPlayedDuration++
+
+                if (this._deadAnimPlayedDuration >= config.Game.FPS / this.deathAnimDuration) {
+                    this._dead()
+                    this._deadAnimPlayedDuration = 0
+                }
             }
         }
 
@@ -96,7 +107,7 @@ module objects {
 
         public shot(): void {
             // update life and respective label
-            this._life-=1
+            this._life -= 1
             this._lifeLabel.text = "Lives: " + this.life
 
         }

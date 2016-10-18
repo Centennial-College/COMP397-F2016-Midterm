@@ -22,6 +22,7 @@ var scenes;
             //var initializatons    
             this._timer = 0;
             this._score = 0;
+            this._deadAnimCounter = 0;
             stage.cursor = 'none';
             this._onTopOfEnemy = false;
             this._backgroundImage = new createjs.Bitmap(assets.getResult("Bg"));
@@ -41,6 +42,11 @@ var scenes;
             this._timeLabel.text = "Time: " + Math.floor(this._timer / config.Game.FPS);
             // dead Enemy
             if (!this._enemy.alive) {
+                // // lets animation finish playing before deleting and creating new
+                // this._deadAnimCounter++
+                // if (this._deadAnimCounter >= 12) {
+                //     console.log('finished animation');
+                //     this._deadAnimCounter = 0
                 // update score
                 this._score += 5;
                 this._scoreLabel.text = "Score: " + this._score;
@@ -118,7 +124,6 @@ var scenes;
         Play.prototype._onEnemyClick = function (event) {
             if (this._onTopOfEnemy) {
                 this._enemy.shot();
-                console.log('clicked enemy');
             }
         };
         /**
