@@ -4,7 +4,7 @@
  * @description The Menu class extends from the Scene class and includes all functionalities of
  * the Menu scene for the game
  * @date Oct 18 2016
- * @version 0.12.0
+ * @version 1.1.2 - added author label to menu scene
  */
 module scenes {
     export class Menu extends objects.Scene {
@@ -13,6 +13,7 @@ module scenes {
         private _backgroundImage: createjs.Bitmap;
         // Label or bitmap
         private _menuTitleLabel: objects.Label
+        private _authorLabel: objects.Label
         // Button 
         private _playBtn: objects.Button;
         // Menu Class Contructor
@@ -37,6 +38,17 @@ module scenes {
             )
             this._menuTitleLabel.shadow = new createjs.Shadow("#000000", 5, 5, 10);
             this.addChild(this._menuTitleLabel)
+
+            // author Label
+            this._authorLabel = new objects.Label(
+                "Developed by: Kevin Ma (2016)",
+                "20px arial",
+                "#f7e907",
+                config.Screen.CENTER_X,
+                config.Screen.CENTER_Y
+            )
+            this._authorLabel.shadow = new createjs.Shadow("#000000", 5, 5, 10);
+            this.addChild(this._authorLabel)
 
             // 5x5 Box Blur filter on bg image
             let blurFilter = new createjs.BlurFilter(5, 5);

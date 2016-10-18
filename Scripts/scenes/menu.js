@@ -9,7 +9,7 @@ var __extends = (this && this.__extends) || function (d, b) {
  * @description The Menu class extends from the Scene class and includes all functionalities of
  * the Menu scene for the game
  * @date Oct 18 2016
- * @version 0.12.0
+ * @version 1.1.2 - added author label to menu scene
  */
 var scenes;
 (function (scenes) {
@@ -28,6 +28,10 @@ var scenes;
             this._menuTitleLabel = new objects.Label("Cops and Robbers", "90px Comic Sans MS", "#f7e907", config.Screen.CENTER_X, config.Screen.CENTER_Y - 100);
             this._menuTitleLabel.shadow = new createjs.Shadow("#000000", 5, 5, 10);
             this.addChild(this._menuTitleLabel);
+            // author Label
+            this._authorLabel = new objects.Label("Developed by: Kevin Ma (2016)", "20px arial", "#f7e907", config.Screen.CENTER_X, config.Screen.CENTER_Y);
+            this._authorLabel.shadow = new createjs.Shadow("#000000", 5, 5, 10);
+            this.addChild(this._authorLabel);
             // 5x5 Box Blur filter on bg image
             var blurFilter = new createjs.BlurFilter(5, 5);
             this._backgroundImage.filters = [blurFilter];
