@@ -39,6 +39,7 @@ module scenes {
             this.addChild(this._timeLabel)
 
             this._enemy = new objects.Enemy("robber", 2)
+            this._enemy.on('click', this._onEnemyClick, this)
             this.addChild(this._enemy)
 
             stage.addChild(this);
@@ -47,9 +48,13 @@ module scenes {
         public update(): void {
             this._timer++
             this._timeLabel.text = "Time: " + Math.floor(this._timer / config.Game.FPS)
+
+            //update scene's game objects
+            this._enemy.update()
         }
 
         private _onEnemyClick(event: createjs.MouseEvent): void {
+            this._enemy.shot()
         }
     }
 }

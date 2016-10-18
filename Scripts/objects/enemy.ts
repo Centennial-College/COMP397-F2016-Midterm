@@ -29,6 +29,9 @@ module objects {
         }
 
         public update(): void {
+            if (this.life == 0) {
+                this._dead()
+            }
         }
 
         public setPosition(pos: objects.Vector2): void {
@@ -41,7 +44,10 @@ module objects {
         }
 
         public shot(): void {
+            console.log('enemy has been shot.');
             this._life--;
+            console.log('remaining lives: ' + this.life);
+
         }
 
         private _dead(): void {

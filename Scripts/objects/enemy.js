@@ -21,6 +21,9 @@ var objects;
             configurable: true
         });
         Enemy.prototype.update = function () {
+            if (this.life == 0) {
+                this._dead();
+            }
         };
         Enemy.prototype.setPosition = function (pos) {
             this.x = pos.x;
@@ -30,7 +33,9 @@ var objects;
             return new objects.Vector2(this.x, this.y);
         };
         Enemy.prototype.shot = function () {
+            console.log('enemy has been shot.');
             this._life--;
+            console.log('remaining lives: ' + this.life);
         };
         Enemy.prototype._dead = function () {
             currentScene.removeChild(this);

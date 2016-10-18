@@ -21,14 +21,18 @@ var scenes;
             this._timeLabel.shadow = new createjs.Shadow("#000", 5, 5, 15);
             this.addChild(this._timeLabel);
             this._enemy = new objects.Enemy("robber", 2);
+            this._enemy.on('click', this._onEnemyClick, this);
             this.addChild(this._enemy);
             stage.addChild(this);
         };
         Play.prototype.update = function () {
             this._timer++;
             this._timeLabel.text = "Time: " + Math.floor(this._timer / config.Game.FPS);
+            //update scene's game objects
+            this._enemy.update();
         };
         Play.prototype._onEnemyClick = function (event) {
+            this._enemy.shot();
         };
         return Play;
     }(objects.Scene));
