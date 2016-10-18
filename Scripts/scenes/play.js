@@ -13,7 +13,7 @@ var scenes;
         Play.prototype.start = function () {
             this._backgroundImage = new createjs.Bitmap(assets.getResult("Bg"));
             this.addChild(this._backgroundImage);
-            this._enemy = new objects.Enemy("enemy", 2);
+            this._enemy = new objects.Enemy("robber", 2);
             this.addChild(this._enemy);
             stage.addChild(this);
         };

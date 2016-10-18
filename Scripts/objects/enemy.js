@@ -9,6 +9,8 @@ var objects;
         __extends(Enemy, _super);
         function Enemy(imageString, life) {
             _super.call(this, enemyAtlas, imageString, "");
+            // randomly spawn robbers locations
+            this.setPosition(new objects.Vector2((Math.random() * config.Screen.WIDTH), Math.random() * config.Screen.HEIGHT));
             this._life = life;
         }
         Object.defineProperty(Enemy.prototype, "life", {
